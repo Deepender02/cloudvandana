@@ -101,9 +101,9 @@ public class Example {
 
 
 
-//////////// JAVASCRIPT/////////////
+///////////////////////// JAVASCRIPT////////////////////////////////
 
-////  1. Take a sentence as an input and reverse every word in that sentence.  //// 
+////////////////  1. Take a sentence as an input and reverse every word in that sentence.  //// ////////////
 
 
 
@@ -122,7 +122,7 @@ function reverseWord(string,separator){
 
 
 
-/////  2. Perform sorting of an array in descending order.  /////
+////////////////  2. Perform sorting of an array in descending order.  /////////////////////
 
 
 const strArr1 = ['a', 'c', 'z', 'f'];
@@ -247,6 +247,146 @@ console.log(descArr);
    <script src = 'Calc.js' ></script>
 </body>
 </html>
+
+
+
+////////////     Create a survey form with Fields; First Name, Last Name, Date of Birth, Country (dropdown), Gender (checkbox), Profession, email, and mobile number. All the input fields are necessary to submit the form.
+Create two buttons Submit and Reset. Reset will reset the form while clicking on submit, first, it will check all the fields and necessary validations and then a popup will appear displaying all the 
+selected values with labels in front of it. On closing the popup, the form should reset all the values.            //////////////////
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <form id="surveyForm" action="#" method="post">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <select id="country" name="country" required>
+        <option value="usa">USA</option>
+        <option value="canada">Canada</option>
+        <option value="uk">UK</option>
+      
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Gender:</label><br>
+      <input type="checkbox" id="male" name="gender" value="male"> Male
+      <input type="checkbox" id="female" name="gender" value="female"> Female
+      <input type="checkbox" id="other" name="gender" value="other"> Other
+    </div>
+    <div class="form-group">
+      <label for="profession">Profession:</label>
+      <input type="text" id="profession" name="profession" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" name="mobile" required>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" id="submitBtn">Submit</button>
+      <button type="button" id="resetBtn">Reset</button>
+    </div>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+#surveyForm {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 70px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input[type="text"],
+input[type="date"],
+select,
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+#submitBtn, #resetBtn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#submitBtn:hover, #resetBtn:hover {
+  background-color: #0056b3;
+}
+document.getElementById("surveyForm").addEventListener("submit", function (e) {
+  e.preventDefault(); 
+ const formData = new FormData(this);
+ let popupText = "";
+  for (const [key, value] of formData.entries()) {
+    popupText += `${key}: ${value}\n`;
+  }
+alert("Survey Form Data:\n\n" + popupText);
+  this.reset();
+});
+document.getElementById("resetBtn").addEventListener("click", function () {
+  document.getElementById("surveyForm").reset();
+});
+
+
+
 
 
 
